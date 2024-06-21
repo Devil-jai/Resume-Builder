@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <DrawerAppBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Resume-Builder" element={<Home />} />
           <Route path='/Template1/WorkExperience' element={<WorkExperience />} />
           <Route path='/Template1/KeySkills' element={<KeySkills />} />
           <Route path='/Template1/Education' element={<Education />} /> 

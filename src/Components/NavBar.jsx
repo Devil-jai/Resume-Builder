@@ -19,7 +19,7 @@ import almabetter from "../Images/almabetterIcon.png";
 
 const drawerWidth = 240;
 const navItems = [
-  { label: 'Resume Templates', path: '/' },
+  { label: 'Resume Templates', path: '/Resume-Builder' },
   { label: 'My Resumes', path: '/myresumes' },
   { label: 'About Us', path: '/about' }
 ];
