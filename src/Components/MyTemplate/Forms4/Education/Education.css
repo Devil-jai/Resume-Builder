@@ -1,0 +1,24 @@
+.Education_div {
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 60%;
+
+}
+
+@media screen and (max-width:576px) {
+    .Education_div {
+
+        width: 90%;
+
+    }
+}
+
+@media screen and (max-width:992px){
+    .Type_input{
+        width: 100%!important;
+    }
+}
+
+.Type_input{
+    width: 50%;
+}

@@ -1,0 +1,5 @@
+@media screen and (max-width:1200px) {
+    .about_row{
+        flex-direction: column-reverse;
+    }
+}
