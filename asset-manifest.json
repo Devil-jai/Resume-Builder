@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Resume-Builder/static/css/main.2dfa9e3f.css",
+    "main.js": "/Resume-Builder/static/js/main.dd2b7a72.js",
+    "static/js/239.d247834a.chunk.js": "/Resume-Builder/static/js/239.d247834a.chunk.js",
+    "static/js/213.21af9f94.chunk.js": "/Resume-Builder/static/js/213.21af9f94.chunk.js",
+    "static/js/455.1673c25e.chunk.js": "/Resume-Builder/static/js/455.1673c25e.chunk.js",
+    "static/js/453.10b9a410.chunk.js": "/Resume-Builder/static/js/453.10b9a410.chunk.js",
+    "static/media/insta.png": "/Resume-Builder/static/media/insta.3265f4c9337175e4f80d.png",
+    "static/media/sample_1.jpg": "/Resume-Builder/static/media/sample_1.b98d23bf141807dddf3b.jpg",
+    "static/media/sample_4.jpg": "/Resume-Builder/static/media/sample_4.1b5a69ba8cf9626566fb.jpg",
+    "static/media/sample_3.jpg": "/Resume-Builder/static/media/sample_3.198febcf3af5a5407080.jpg",
+    "static/media/sample_2.jpg": "/Resume-Builder/static/media/sample_2.6769219aeef0086f46fe.jpg",
+    "static/media/profile.png": "/Resume-Builder/static/media/profile.84c6bfadb382a9ddef77.png",
+    "static/media/telegram.png": "/Resume-Builder/static/media/telegram.e9722f26cc228e817986.png",
+    "static/media/linkedin.png": "/Resume-Builder/static/media/linkedin.17e919bb623c20be8b80.png",
+    "static/media/mail.png": "/Resume-Builder/static/media/mail.d86774603b1727b8f4bb.png",
+    "static/media/facebook.png": "/Resume-Builder/static/media/facebook.49e67d43221b6bb1aa86.png",
+    "static/media/almabetterIcon.png": "/Resume-Builder/static/media/almabetterIcon.3470d845252a6bd307c0.png",
+    "index.html": "/Resume-Builder/index.html",
+    "main.2dfa9e3f.css.map": "/Resume-Builder/static/css/main.2dfa9e3f.css.map",
+    "main.dd2b7a72.js.map": "/Resume-Builder/static/js/main.dd2b7a72.js.map",
+    "239.d247834a.chunk.js.map": "/Resume-Builder/static/js/239.d247834a.chunk.js.map",
+    "213.21af9f94.chunk.js.map": "/Resume-Builder/static/js/213.21af9f94.chunk.js.map",
+    "455.1673c25e.chunk.js.map": "/Resume-Builder/static/js/455.1673c25e.chunk.js.map",
+    "453.10b9a410.chunk.js.map": "/Resume-Builder/static/js/453.10b9a410.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2dfa9e3f.css",
+    "static/js/main.dd2b7a72.js"
+  ]
+}
