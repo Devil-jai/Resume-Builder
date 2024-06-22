@@ -25,6 +25,7 @@ function KeySkills() {
         delete data[key]
       }
     }
+
     const WorkE_PersI_KeyS = {...data , ...keyskilldata }
     navigate("/Template1/Education",{state: WorkE_PersI_KeyS})
     

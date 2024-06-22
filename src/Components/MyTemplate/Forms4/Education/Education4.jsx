@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar4 from "../../Sidebar/SideBar4";
 import { useForm } from "react-hook-form";
-import "./Education.css";
+import "../../Forms/Education/Education.css";
 import { Button, Grid, MenuItem, Select, TextField } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -16,8 +16,11 @@ function Education4() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+
+  const startYear = watch("StartYear")
 
   const onSubmit = (data) => {
     for (const key in data) {
@@ -109,7 +112,9 @@ function Education4() {
 
                 <Select
                   fullWidth
-                  {...register("EndYear", { required: true })}
+                  {...register("EndYear", { required: "EndYear is required" ,
+                    validate : value => (startYear && value && startYear < value || "EndYear must be greater than Start Year")
+                  })}
                   area-invalid={errors.EndYear ? "true" : "false"}
                 >
            <MenuItem value={"Present"}>Present</MenuItem>
@@ -124,7 +129,7 @@ function Education4() {
                     <MenuItem value={2022}>2022</MenuItem>
                     <MenuItem value={2023}>2023</MenuItem>
                 </Select>
-                {errors.EndYear && <span className="text-danger">EndYear is required</span>}
+                {errors.EndYear && <span className="text-danger">{errors.EndYear.message}</span>}
               </Grid>
             </Grid>
                 <hr className='mt-5 ' />

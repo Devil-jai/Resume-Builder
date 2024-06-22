@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./WorkExperience.css"
+import "../../Forms/Work Experience/WorkExperience.css"
 import SideBar2 from "../../Sidebar/SideBar2";
 import { useForm } from 'react-hook-form'
 import { Button, Grid, MenuItem, Select, TextField } from '@mui/material'
@@ -15,9 +15,12 @@ function WorkExperience2() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm()
 
+  const startYear = watch("StartYear")
+  const startYear2 = watch("StartYear_2")
   const onSubmit = (data) => {
     for (const key in data) {
       if (data[key] == "") {
@@ -91,7 +94,9 @@ function WorkExperience2() {
 
                   <Select
                     fullWidth
-                    {...register("EndYear", { required: true })}
+                    {...register("EndYear", { required: "EndYear is required" ,
+                      validate : value => (startYear && value && startYear < value || "EndYear must be greater than Start Year")
+                    })}
                     area-invalid={errors.EndYear ? "true" : "false"}
                   >
                    <MenuItem value={"Present"}>Present</MenuItem>
@@ -106,7 +111,7 @@ function WorkExperience2() {
                     <MenuItem value={2022}>2022</MenuItem>
                     <MenuItem value={2023}>2023</MenuItem>
                   </Select>
-                  {errors.EndYear && <span className="text-danger">EndYear is required</span>}
+                  {errors.EndYear && <span className="text-danger">{errors.EndYear.message}</span>}
                 </Grid>
               </Grid>
 
@@ -130,14 +135,15 @@ function WorkExperience2() {
                     {errors.OrganizationName_2 && <span className="text-danger">Organization Name is required</span>}
                   </Grid>
                   <Grid item xs={12} md={6} >
-                    <label htmlFor="" className='d-block mb-1'>Start Year</label>
+                    <label className='d-block mb-1'>Start Year</label>
 
                     <Select
                       fullWidth
-                      {...register("StartYear_2", { required: show })}
+                      {...register("StartYear_2", { required:show })}
                       area-invalid={errors.StartYear_2 ? "true" : "false"}
                     >
-                     <MenuItem value={2014}>2014</MenuItem>
+             
+                    <MenuItem value={2014}>2014</MenuItem>
                     <MenuItem value={2015}>2015</MenuItem>
                     <MenuItem value={2016}>2016</MenuItem>
                     <MenuItem value={2017}>2017</MenuItem>
@@ -155,7 +161,9 @@ function WorkExperience2() {
 
                     <Select
                       fullWidth
-                      {...register("EndYear_2", { required: show })}
+                      {...register("EndYear_2", { required: show,
+                      
+                       })}
                       area-invalid={errors.EndYear_2 ? "true" : "false"}
                     >
                        <MenuItem value={"Present"}>Present</MenuItem>
@@ -170,7 +178,7 @@ function WorkExperience2() {
                     <MenuItem value={2022}>2022</MenuItem>
                     <MenuItem value={2023}>2023</MenuItem>
                     </Select>
-                    {errors.EndYear_2 && <span className="text-danger">EndYear is required</span>}
+                    {errors.EndYear_2 && <span className="text-danger">End Year is required</span>}
                   </Grid>
                 </Grid>
               </div>

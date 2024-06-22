@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import img from "../../../../Images/profile.png";
-import "./PersonalInfo.css";
+import "../../Forms/PersonalInfo/PersonalInfo.css";
 import SideBar2 from "../../Sidebar/SideBar2";
 import { useNavigate } from "react-router-dom";
 
@@ -71,7 +71,7 @@ function PersonalInfo2() {
                   type="text"
                   name="FirstName"
                   {...register("FirstName", { required: 
-                    "First Name is required" , minLength: {value : 3 , message : "length is too short"}})}
+                    "First Name is required" ,pattern:  {value :  /^[A-Za-z\s]*$/ ,message: "Enter character only"}  , minLength: {value : 3 , message : "length is too short"}})}
                     aria-invalid={errors.FirstName ? "true" : "false"}
                 />
                 {errors.FirstName && <span className="text-danger">{errors.FirstName.message}</span>}
@@ -81,7 +81,7 @@ function PersonalInfo2() {
                 <label className="d-block">Last Name</label>
                 <input
                   type="text"
-                  {...register("LastName", { required: "Last Name is required" ,minLength: {value : 3 , message : "length is too short"}})}
+                  {...register("LastName", { required: "Last Name is required",pattern:  {value :  /^[A-Za-z\s]*$/ ,message: "Enter character only"}   ,minLength: {value : 3 , message : "length is too short"}})}
                   aria-invalid={errors.LastName ? "true" : "false"}
                 />
                 {errors.LastName && (
@@ -93,11 +93,11 @@ function PersonalInfo2() {
                 <label className="d-block">Email</label>
                 <input
                   type="email"
-                  {...register("Email", { required: true , pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,})}
+                  {...register("Email", { required: true , pattern: {value : /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "Invalid Email"}})}
                   aria-invalid={errors.Email ? "true" : "false"}
                 />
                 {errors.Email && (
-                  <span className="text-danger">Email is required</span>
+                  <span className="text-danger">{errors.Email.message}</span>
                 )}
               </div>
 
@@ -129,11 +129,11 @@ function PersonalInfo2() {
                 <label className="d-block">City</label>
                 <input
                   type="text"
-                  {...register("city", { required: true })}
+                  {...register("city", { required: "City is required" ,pattern:  {value :  /^[A-Za-z\s]*$/ ,message: "Enter character only"} })}
                   aria-invalid={errors.city ? "true" : "false"}
                 />
                 {errors.city && (
-                  <span className="text-danger">City is required</span>
+                  <span className="text-danger">{errors.city.message}</span>
                 )}
               </div>
 
@@ -141,18 +141,18 @@ function PersonalInfo2() {
                 <label className="d-block">State</label>
                 <input
                   type="text"
-                  {...register("state", { required: true })}
+                  {...register("state", { required: "State is required" ,pattern:  {value :  /^[A-Za-z\s]*$/ ,message: "Enter character only"} })}
                   aria-invalid={errors.state ? "true" : "false"}
                 />
                 {errors.state && (
-                  <span className="text-danger">State is required</span>
+                  <span className="text-danger">{errors.state.message}</span>
                 )}
               </div>
 
               <div className="col-lg-6 mt-4">
                 <label className="d-block">PostalCode</label>
                 <input
-                  type="text"
+                  type="number"
                   {...register("postalcode", { required: "PostalCode is required" , minLength: {value : 6 , message : "length is too short"}, maxLength: {value : 6 , message : "length is too long"}})}
                   aria-invalid={errors.postalcode ? "true" : "false"}
                 />

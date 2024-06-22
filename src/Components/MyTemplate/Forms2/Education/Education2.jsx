@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar2 from "../../Sidebar/SideBar2";
 import { useForm } from "react-hook-form";
-import "./Education.css";
+import "../../Forms/Education/Education.css";
 import { Button, Grid, MenuItem, Select, TextField } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

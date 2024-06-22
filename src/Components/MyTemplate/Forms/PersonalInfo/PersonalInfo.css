@@ -17,6 +17,7 @@
 .PersonalInfo_img img{
 	border-radius: 50%;
 	width: 150px;
+	margin-left: 8px;
 	height: 130px;
 }
 .PersonalInfo_form label{
@@ -35,6 +36,7 @@
 
 @media screen and (max-width:576px){
 	.PersonalInfo_img img{
+		margin-left: 20px;
 	width: 120px;
 	height: 120px;
 }

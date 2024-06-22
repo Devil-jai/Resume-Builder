@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./WorkExperience.css"
+import "../../Forms/Work Experience/WorkExperience.css"
 import SideBar4 from "../../Sidebar/SideBar4";
 import { useForm } from 'react-hook-form'
 import { Button, Grid, MenuItem, Select, TextField } from '@mui/material'
@@ -15,9 +15,11 @@ function WorkExperience4() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm()
 
+  const startYear = watch("StartYear")
   const onSubmit = (data) => {
     for (const key in data) {
       if (data[key] == "") {
@@ -90,7 +92,7 @@ function WorkExperience4() {
 
                   <Select
                     fullWidth
-                    {...register("EndYear", { required: true })}
+                    {...register("EndYear", { required:  "EndYear is required", validate : value => (startYear && value && startYear < value || "EndYear must be greater than Start Year")})}
                     area-invalid={errors.EndYear ? "true" : "false"}
                   >
                    <MenuItem value={"Present"}>Present</MenuItem>
@@ -105,7 +107,7 @@ function WorkExperience4() {
                     <MenuItem value={2022}>2022</MenuItem>
                     <MenuItem value={2023}>2023</MenuItem>
                   </Select>
-                  {errors.EndYear && <span className="text-danger">EndYear is required</span>}
+                  {errors.EndYear && <span className="text-danger">{errors.EndYear.message}</span>}
                 </Grid>
               </Grid>
 

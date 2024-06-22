@@ -18,8 +18,11 @@ function Education() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+
+  const startYear = watch("EducationStartYear")
 
   const onSubmit = (data) => {
     for (const key in data) {
@@ -117,7 +120,9 @@ function Education() {
 
                   <Select
                     fullWidth
-                    {...register("EducationEndYear", { required: true })}
+                    {...register("EducationEndYear", { required: "EndYear is required" ,
+                      validate : value => (startYear && value && startYear < value || "EndYear must be greater than Start Year")
+                    })}
                     area-invalid={errors.EducationEndYear ? "true" : "false"}
                   >
                     <MenuItem value={"Present"}>Present</MenuItem>
@@ -133,7 +138,7 @@ function Education() {
                     <MenuItem value={2023}>2023</MenuItem>
                   </Select>
                   {errors.EducationEndYear && (
-                    <span className="text-danger">EndYear is required</span>
+                    <span className="text-danger">{errors.EducationEndYear.message}</span>
                   )}
                 </Grid>
               </Grid>

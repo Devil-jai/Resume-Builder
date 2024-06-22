@@ -8,7 +8,9 @@ import "jspdf-autotable";
 import { useNavigate } from "react-router-dom";
 
 function Template_1() {
-  const [filename, setfilename] = useState("");         
+  const [filename, setfilename] = useState("");
+  const [screensize , setScreenSize] = useState({width:window.innerWidth,height:window.innerHeight})
+
 
   const navigate = useNavigate();
   const UserData = useSelector((data) => data.Userdata.User);
@@ -31,23 +33,52 @@ function Template_1() {
       </li>
     ) : null;
   };
+  const calculateoffsets = () =>{
+    let xoffset , yoffset , scale;
+    const width = screensize.width;
+
+    if(width <= 480){
+      xoffset = 80;
+      yoffset = 10;
+      scale = 1.1;
+    }
+    else if(width<=786){
+      xoffset = 60;
+      yoffset = 10;
+      scale = 1;
+    }
+    else {
+      xoffset = 20;
+      yoffset = 20;
+      scale = 0.8;
+    }
+    return {xoffset,yoffset,scale}
+  }
 
   const generatePdf = () => {
-    const doc = new jsPDF("p", "pt", "a4");
+    const doc = new jsPDF("portrait", "pt", "a4");
+    const {xoffset ,yoffset , scale} = calculateoffsets();
     doc.html(componentRef.current, {
       callback: function (doc) {
         doc.save(filename);
       },
-      x: 10,
-      y: 10,
+      x: xoffset ,
+      y: yoffset ,
+      html2canvas: {
+        scale: scale,
+      }
     });
   };
-  useEffect(() => {
 
+  useEffect(()=>{
+    const handleResize = () =>{
+      setScreenSize({width : window.innerWidth, height : window.innerHeight})
+    };
 
-  }, [UserData])
-  
+    window.addEventListener("resize", handleResize);
 
+    return ()=> window.removeEventListener("resize",handleResize)
+  },[])
   return (
     <>
       <Container>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Card, Container, Grid, Input, Button } from "@mui/material";
 import "./Template.css";
 import { useSelector } from "react-redux";
@@ -10,6 +10,8 @@ import jsPDF from "jspdf";
 function Template_3() {
 
   const [filename, setfilename] = useState("");
+  const [screensize , setScreenSize] = useState({width:window.innerWidth,height:window.innerHeight})
+
   const navigate = useNavigate();
   const componentRef = useRef();
 
@@ -35,16 +37,52 @@ function Template_3() {
     ) : null;
   };
 
+  const calculateoffsets = () =>{
+    let xoffset , yoffset , scale;
+    const width = screensize.width;
+
+    if(width <= 480){
+      xoffset = 80;
+      yoffset = 10;
+      scale = 1.1;
+    }
+    else if(width<=786){
+      xoffset = 60;
+      yoffset = 10;
+      scale = 1;
+    }
+    else {
+      xoffset = 20;
+      yoffset = 20;
+      scale = 0.8;
+    }
+    return {xoffset,yoffset,scale}
+  }
+
   const generatePdf = () => {
-    const doc = new jsPDF("p", "pt", "a4");
+    const doc = new jsPDF("portrait", "pt", "a4");
+    const {xoffset ,yoffset , scale} = calculateoffsets();
     doc.html(componentRef.current, {
       callback: function (doc) {
         doc.save(filename);
       },
-      x: 10,
-      y: 10,
+      x: xoffset ,
+      y: yoffset ,
+      html2canvas: {
+        scale: scale,
+      }
     });
   };
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      setScreenSize({width : window.innerWidth, height : window.innerHeight})
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return ()=> window.removeEventListener("resize",handleResize)
+  },[])
 
   return (
     <>

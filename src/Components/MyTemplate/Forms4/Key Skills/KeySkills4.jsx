@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "./KeySkills.css"
+import "../../Forms/Key Skills/KeySkills.css"
 import SideBar4 from "../../Sidebar/SideBar4";
 import { useForm } from 'react-hook-form'
 import { Button, Grid, MenuItem, Select, TextField } from '@mui/material'
